@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Santosh added the merge file to the window")
         // Do any additional setup after loading the view.
     }
 
