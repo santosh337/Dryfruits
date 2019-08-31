@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController ,  CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
+    
+    
     /** Create the UILabel */
     var showLabel: UILabel = {
         let label = UILabel()
@@ -42,6 +47,23 @@ class ViewController: UIViewController {
         self.view.addSubview(showLabel)
         self.view.bringSubviewToFront(showLabel)
         // Do any additional setup after loading the view.
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     @objc func buttonPressed() {
