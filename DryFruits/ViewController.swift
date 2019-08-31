@@ -15,7 +15,10 @@ class ViewController: UIViewController {
         print("Santosh added the merge file to the window")
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func clicked(_ sender: UIButton) {
+        print("Button was clicked but not done anything for it")
+    }
+    
 
 }
 
