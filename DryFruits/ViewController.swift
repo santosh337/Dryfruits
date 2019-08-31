@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         switchBtn.frame = CGRect(x: 30, y: self.view.frame.origin.y + 70, width: view.frame.width - 60, height: 30)
         self.view.addSubview(switchBtn)
         self.view.addSubview(showLabel)
+        self.view.bringSubviewToFront(showLabel)
         // Do any additional setup after loading the view.
     }
     
